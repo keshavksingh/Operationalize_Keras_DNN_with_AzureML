@@ -82,8 +82,9 @@ if __name__ == '__main__':
     ## Alternatively For setting up ACS-Kubernetes Cluster mode, create 3 agent  (default)
     ## az ml env setup -l eastus2 -n dscluster -g datascience --cluster --agent-count-3
     ## az ml env set -n dscluster -g datascience  
-    ## Next once the envoriment is set, the bext command in one step will register model, create manifest, create image and setup service
-    ## command - az ml service create realtime -f score.py --model-file PredictPurchase_model.h5 -s service-schema.json -n productapp -r python--collect-model-data true -c aml_config\conda_dependencies.yml
+    ## Next once the envoriment is set, the next command in one step will register model, create manifest, create image and setup service
+    ## command - az ml service create realtime -f score.py --model-file PredictPurchase_model.h5 
+    # -s service-schema.json -n productapp -r python--collect-model-data true -c aml_config\conda_dependencies.yml
     ## Alternatively you can do this step by step and keep passing each Ids to the next step 
     ##az ml service create realtime -n productapp -r python --collect-model-data true --image-id 8f14e874-4473-40d7-aca2-f2a651d24c48
     ## Example:
@@ -94,4 +95,9 @@ if __name__ == '__main__':
     ## Now using the Service
     ## az ml service run realtime -i productapp -d "{\"input_df\": [{\"TimeSpentOnWeb\": 5.1, \"TimeSpentOnProductPage\": 3.5}]}"
     ##az ml service logs realtime -i <<ServiceName>> (For getting the service telemetry)
+    ##https://docs.microsoft.com/en-us/azure/machine-learning/desktop-workbench/how-to-read-write-files
+    ##https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-manager-register-provider-errors
+    ##az ml env setup -n dscluster -g datascience -l eastus2 --cluster --agent-count 2
+    ##az ml env delete -n dscluster -g datascience 
+
     
